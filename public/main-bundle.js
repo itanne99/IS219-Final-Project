@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);\n// Imports\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});\n// Module\n___CSS_LOADER_EXPORT___.push([module.i, \"body {\\r\\n    margin: 0;\\r\\n    background-color: #444;\\r\\n}\\r\\n\\r\\nh1 {\\r\\n    height: 100vh;\\r\\n    display: flex;\\r\\n    color: white;\\r\\n    align-items: center;\\r\\n    justify-content: center;\\r\\n    font-size: 5em;\\r\\n    font-family: sans-serif;\\r\\n    text-shadow: 0 0 20px black;\\r\\n}\", \"\"]);\n// Exports\n/* harmony default export */ __webpack_exports__[\"default\"] = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack:///./src/main.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);\n// Imports\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});\n// Module\n___CSS_LOADER_EXPORT___.push([module.i, \"body {\\r\\n    margin: 0;\\r\\n    background-color: #444;\\r\\n}\\r\\n\\r\\n.profile{\\r\\n    height: 100vh;\\r\\n    display: flex;\\r\\n    align-items: center;\\r\\n    justify-content: center;\\r\\n    flex-flow: column;\\r\\n}\\r\\n\\r\\nimg{\\r\\n    border-radius: 100%;\\r\\n    width: 300px;\\r\\n    box-shadow: 0 0 20px black;\\r\\n}\\r\\n\\r\\nh1 {\\r\\n\\r\\n    color: white;\\r\\n\\r\\n    font-size: 5em;\\r\\n    font-family: sans-serif;\\r\\n    text-shadow: 0 0 20px black;\\r\\n}\", \"\"]);\n// Exports\n/* harmony default export */ __webpack_exports__[\"default\"] = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack:///./src/main.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -153,7 +153,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./main.css */ \"./src/main.css\")\r\n__webpack_require__(/*! ./index.html */ \"./src/index.html\")\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("__webpack_require__(/*! ./main.css */ \"./src/main.css\");\n\n__webpack_require__(/*! ./index.html */ \"./src/index.html\");\n\nvar a = function () {\n  console.log(\"Hello from the future!\");\n};\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 
