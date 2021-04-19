@@ -1,4 +1,3 @@
-
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,6 +8,17 @@ var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+const webpack = require("webpack")
+const config = require("../config/webpack.dev")
+const compile = webpack(config)
+
+const webpackDevMiddleware = require("webpack-dev-middleware")(compile, config.devServer);
+const webpackHotMiddleware = require("webpack-hot-middleware")(compile);
+
+
+app.use(webpackDevMiddleware);
+app.use(webpackHotMiddleware);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
