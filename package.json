@@ -4,15 +4,21 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "webpack-dev": "webpack-dev-server --config=config/webpack.dev.js"
+    "webpack-dev": "webpack-dev-server --config=config/webpack.dev.js",
+    "build": "webpack --config=config/webpack.dev.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "css-loader": "^5.2.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "extract-loader": "^5.1.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^0.5.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
+    "style-loader": "^2.0.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.11.0"
