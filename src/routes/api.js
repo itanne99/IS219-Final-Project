@@ -16,4 +16,24 @@ router.get('/list', function(req, res, next) {
     // https://dev.to/nurofsun/building-simple-rest-api-with-express-js-and-mysql-140p
 });
 
+router.post('/new', function (req, res){
+   let sql = "INSERT INTO random_people (first_name, last_name, email, phone, street_address, city, state) VALUES (?)";
+   let values = [
+       req.body.first_name,
+       req.body.last_name,
+       req.body.email,
+       req.body.phone,
+       req.body.street_address,
+       req.body.city,
+       req.body.state
+   ];
+   mysql.query(sql, [values], function (err, data, fields){
+      if(err) throw err;
+      res.json({
+          status: 200,
+          message: "New user add successfully"
+      })
+   });
+});
+
 module.exports = router;
