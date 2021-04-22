@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    .container
+        form(action='/api/new' method='POST')
+            .form-group.row
+                label(for='first_name') First Name:
+                input#first_name.form-control(type='text' name='first_name' placeholder='')
+            .form-group.row
+                label(for='last_name') Last Name:
+                input#last_name.form-control(type='text' name='last_name' placeholder='')
+            .form-group.row
+                label(for='email') Email:
+                input#email.form-control(type='text' name='email' placeholder='')
+            .form-group.row
+                label(for='phone') Phone:
+                input#phone.form-control(type='text' name='phone' placeholder='')
+            .form-group.row
+                label(for='street_address') Street Address:
+                input#street_address.form-control(type='text' name='street_address' placeholder='')
+            .form-group.row
+                label(for='city') City:
+                input#city.form-control(type='text' name='city' placeholder='')
+            .form-group.row
+                label(for='state') State:
+                input#state.form-control(type='text' name='state' placeholder='')
+            .form-group.row
+                div
+                    button.btn.btn-primary(type='submit') Add
