@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    .container
+        table.table
+            thead
+                tr
+                    th First Name
+                    th Last Name
+                    th Email
+                    th Phone
+                    th Street Address
+                    th City
+                    th State
+            tbody
+                each item in list
+                    tr
+                        td #{item.first_name}
+                        td #{item.last_name}
+                        td #{item.email}
+                        td #{item.phone}
+                        td #{item.street_address}
+                        td #{item.city}
+                        td #{item.state}
