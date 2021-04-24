@@ -7,11 +7,7 @@ router.get('/list', function(req, res) {
     let sql = 'SELECT * FROM random_people';
     mysql.query(sql, function (err, data, fields){
         if(err) throw err;
-        res.json({
-            status: 200,
-            data,
-            message: "User lists retrieved successfully"
-        })
+        res.json(data);
     })
 });
 
@@ -20,9 +16,7 @@ router.get("/person/:id", function (req, res){
     mysql.query(sql, function (err, data, fields){
         if(err) throw err;
         res.json({
-            status: 200,
-            data,
-            message: "User lists retrieved successfully"
+            data
         })
     })
 });
