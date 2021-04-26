@@ -71,6 +71,17 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(pug)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "views/[name].[ext]"
+                        }
+                    }
+                ]
             }
         ]
     }, plugins: [

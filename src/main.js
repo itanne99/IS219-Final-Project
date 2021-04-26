@@ -5,3 +5,4 @@ import 'popper.js';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 // require("./views/index.html")
+import img1 from './images/img1.jpg';
