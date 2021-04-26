@@ -1,2 +1,2 @@
-require("babel-register")
-require("../bin/www")
+require('babel-register');
+require('../bin/www');

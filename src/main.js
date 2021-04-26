@@ -1,8 +1,9 @@
-require("babel-runtime/regenerator")
-require("webpack-hot-middleware/client")
-import $ from "jquery";
-import 'popper.js';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
+import './static/js/jquery';
+import './static/js/bootstrap.bundle';
+import './static/css/bootstrap.css';
+import './static/images/img1.jpg';
+
+require('babel-runtime/regenerator');
+require('webpack-hot-middleware/client');
+require('./server/main');
 // require("./views/index.html")
-import img1 from './images/img1.jpg';

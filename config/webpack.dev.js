@@ -1,90 +1,93 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
     entry: {
-        main: [ "jquery", "babel-polyfill", "./src/main.js"]
+        main: ['babel-polyfill', './src/main.js'],
     },
-    mode: "development",
+    target: 'node',
+    externals: [nodeExternals()],
+    mode: 'development',
     output: {
-        filename: "[name]-bundle.js",
-        path: path.resolve(__dirname, "../public"),
-        publicPath: "/"
+        filename: '[name]-bundle.js',
+        path: path.resolve(__dirname, '../public'),
+        publicPath: '/',
     },
     devServer: {
         inline: false,
-        contentBase: "public",
+        contentBase: 'public',
         overlay: true,
         hot: true,
         stats: {
-            colors: true
-        }
+            colors: true,
+        },
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
-                use: [
-                    {
-                        loader: "babel-loader"
-                    }
-                ],
-                exclude: /node_modules/
+                use: ['babel-loader', 'eslint-loader'],
+                exclude: /node_modules/,
             },
             {
                 test: /\.css$/,
                 use: [
+                    MiniCssExtractPlugin.loader,
                     {
-                        loader: "style-loader"
+                        loader: 'css-loader',
                     },
-                    {
-                        loader: "css-loader"
-                    }
-                ]
+                ],
             },
             {
                 test: /\.html$/,
                 use: [
                     {
-                        loader: "file-loader",
+                        loader: 'file-loader',
                         options: {
-                            name: "[name].html"
-                        }
+                            name: '[name].html',
+                        },
                     },
                     {
-                        loader: "extract-loader"
+                        loader: 'extract-loader',
                     },
                     {
-                        loader: "html-loader",
+                        loader: 'html-loader',
                         options: {
-                            attrs: ["img:src"]
-                        }
-                    }
-                ]
+                            attrs: ['img:src'],
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(jpg|gif|png)$/,
                 use: [
                     {
-                        loader: "file-loader",
+                        loader: 'file-loader',
                         options: {
-                            name: "images/[name].[ext]"
-                        }
-                    }
-                ]
+                            name: 'images/[name].[ext]',
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(pug)$/,
                 use: [
                     {
-                        loader: "file-loader",
+                        loader: 'file-loader',
                         options: {
-                            name: "views/[name].[ext]"
-                        }
-                    }
-                ]
-            }
-        ]
-    }, plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ]
-}
+                            name: 'views/[name].[ext]',
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css',
+        }),
+    ],
+};
