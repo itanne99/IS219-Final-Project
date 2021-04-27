@@ -22,3 +22,7 @@ block content
                         td #{item.street_address}
                         td #{item.city}
                         td #{item.state}
+                        td
+                            a.btn.btn-primary(href=`/form?id=${item.id}` role='button') Edit
+                        td
+                            a.btn.btn-danger(href='#' role='button') Delete
