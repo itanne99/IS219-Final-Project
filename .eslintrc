@@ -9,6 +9,7 @@
     "no-var": "off",
     "prefer-arrow-callback": "off",
     "func-names": "off",
-    "import/order": "off"
+    "import/order": "off",
+    "dot-notation": "off"
   }
 }

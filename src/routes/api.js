@@ -12,13 +12,11 @@ router.get('/list', function (req, res) {
     });
 });
 
-router.get('/person/:id', function (req, res) {
+router.get('/person', function (req, res) {
     const sql = 'SELECT * FROM random_people WHERE id=?';
-    mysql.query(sql, req.params.id, function (err, data, fields) {
+    mysql.query(sql, req.query.id, function (err, data, fields) {
         if (err) throw err;
-        res.json({
-            data,
-        });
+        res.json(data);
     });
 });
 
