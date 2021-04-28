@@ -70,4 +70,51 @@ router.post('/register', (req, res) => {
   }
 });
 
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+function generateAuthToken() {
+  return crypto.randomBytes(30).toString('hex');
+}
+
+const authTokens = {};
+
+router.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  const hashedPassword = getHashedPassword(password);
+
+  const user = users.find(function (u) {
+    return u.email === email && hashedPassword === u.password;
+  });
+
+  if (user) {
+    const authToken = generateAuthToken();
+
+    // Store authentication token
+    authTokens[authToken] = user;
+
+    // Setting the auth token in cookies
+    res.cookie('AuthToken', authToken);
+
+    // Redirect user to the protected page
+    res.redirect('/table');
+  } else {
+    res.render('login', {
+      message: 'Invalid username or password',
+      messageClass: 'alert-danger',
+    });
+  }
+});
+
+router.use((req, res, next) => {
+  // Get auth token from the cookies
+  const authToken = req.cookies['AuthToken'];
+
+  // Inject the user to the request
+  req.user = authTokens[authToken];
+
+  next();
+});
+
 module.exports = router;
