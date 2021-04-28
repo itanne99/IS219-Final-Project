@@ -3,7 +3,7 @@ extends layout
 block content
     if message
         div(class=`alert ${messageClass}`)
-            #{message}
+            span #{message}
     form(method='POST' action='/register')
         .form-group
             label(for='firstNameInput') First Name
