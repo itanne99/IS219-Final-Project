@@ -14,6 +14,16 @@ const webpackHotMiddleware = require('webpack-hot-middleware')(compile);
 const webpackDevMiddleware = require('webpack-dev-middleware')(compile, config.devServer);
 require("dotenv").config();
 
+/*Routers*/
+var indexRouter = require('./routes');
+var usersRouter = require('./routes/users');
+var apiRouter = require('./routes/api');
+var formRouter = require('./routes/form');
+var tableRouter = require('./routes/table');
+var authRouter = require('./routes/auth');
+
+var app = express();
+
 /*Passport Config*/
 const session = {
     secret: process.env.SESSION_SECRET,
@@ -46,16 +56,6 @@ if (app.get("env") === "production") {
     // Serve secure cookies, requires HTTPS
     session.cookie.secure = true;
 }
-
-/*Routers*/
-var indexRouter = require('./routes');
-var usersRouter = require('./routes/users');
-var apiRouter = require('./routes/api');
-var formRouter = require('./routes/form');
-var tableRouter = require('./routes/table');
-var authRouter = require('./routes/auth');
-
-var app = express();
 
 app.use(webpackDevMiddleware);
 app.use(webpackHotMiddleware);
