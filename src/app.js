@@ -8,23 +8,23 @@ const Auth0Strategy = require('passport-auth0');
 const webpack = require('webpack');
 const config = require('../config/webpack.dev');
 
-/*Webpack Config*/
+/* Webpack Config */
 const compile = webpack(config);
 const webpackHotMiddleware = require('webpack-hot-middleware')(compile);
 const webpackDevMiddleware = require('webpack-dev-middleware')(compile, config.devServer);
-require("dotenv").config();
+require('dotenv').config();
 
-/*Routers*/
-var indexRouter = require('./routes');
-var usersRouter = require('./routes/users');
-var apiRouter = require('./routes/api');
-var formRouter = require('./routes/form');
-var tableRouter = require('./routes/table');
-var authRouter = require('./routes/auth');
+/* Routers */
+const indexRouter = require('./routes');
+const usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
+const formRouter = require('./routes/form');
+const tableRouter = require('./routes/table');
+const authRouter = require('./routes/auth');
 
-var app = express();
+const app = express();
 
-/*Passport Config*/
+/* Passport Config */
 const session = {
     secret: process.env.SESSION_SECRET,
     cookie: {},
@@ -37,9 +37,9 @@ const strategy = new Auth0Strategy(
         domain: process.env.AUTH0_DOMAIN,
         clientID: process.env.AUTH0_CLIENT_ID,
         clientSecret: process.env.AUTH0_CLIENT_SECRET,
-        callbackURL: process.env.AUTH0_CALLBACK_URL
+        callbackURL: process.env.AUTH0_CALLBACK_URL,
     },
-    function(accessToken, refreshToken, extraParams, profile, done) {
+    function (accessToken, refreshToken, extraParams, profile, done) {
         /**
          * Access tokens are used to authorize users to an API
          * (resource server)
@@ -52,7 +52,7 @@ const strategy = new Auth0Strategy(
     },
 );
 
-if (app.get("env") === "production") {
+if (app.get('env') === 'production') {
     // Serve secure cookies, requires HTTPS
     session.cookie.secure = true;
 }
