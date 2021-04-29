@@ -7,6 +7,10 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/callback', function (req, res) {
+  res.redirect('/table');
+});
+
 router.get('/login', function (req, res, next) {
   res.render('userPortal', { title: 'Login Portal', mode: 'login' });
 });
