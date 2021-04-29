@@ -13,9 +13,11 @@ html
             a.nav-link(href='/')
               | Home
               span.sr-only (current)
-          li.nav-item
-            a.nav-link(href='/auth/login') Login
-          li.nav-item
-            a.nav-link(href='/auth/logout') Logout
+          if isAuthenticated
+            li.nav-item
+              a.nav-link(href='/auth/logout') Logout
+          else
+            li.nav-item
+              a.nav-link(href='/auth/login') Login
     block content
     script(src='main-bundle.js')

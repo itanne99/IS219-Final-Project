@@ -83,6 +83,11 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
+app.use((req, res, next) => {
+    res.locals.isAuthenticated = req.isAuthenticated();
+    next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', apiRouter);
