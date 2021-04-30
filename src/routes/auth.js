@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const querystring = require('querystring');
+
 require('dotenv').config();
 
 const router = express.Router();
@@ -23,13 +24,13 @@ router.get('/callback', (req, res, next) => {
         if (!user) {
             return res.redirect('/login');
         }
-        return req.logIn(user, () => {
+        req.logIn(user, () => {
             if (err) {
                 return next(err);
             }
             const { returnTo } = req.session.returnTo;
             delete req.session.returnTo;
-            return res.redirect(returnTo || '/table'); // #TODO: check that this sends the user to the table
+            res.redirect(returnTo || '/table'); // #TODO: check that this sends the user to the table
         });
     })(req, res, next);
 });

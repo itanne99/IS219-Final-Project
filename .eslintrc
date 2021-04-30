@@ -10,6 +10,7 @@
     "prefer-arrow-callback": "off",
     "func-names": "off",
     "import/order": "off",
-    "dot-notation": "off"
+    "dot-notation": "off",
+    "consistent-return": "off"
   }
 }

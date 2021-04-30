@@ -5,3 +5,7 @@ block content
     h1= title
     p Welcome to #{title}
     a(href='/auth/login') login
+    if locals.isAuthenticated
+      h1.display-1 You are logged in!
+    else
+      h1.display-1 You are NOT logged in!

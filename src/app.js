@@ -28,8 +28,8 @@ const app = express();
 const session = {
     secret: process.env.SESSION_SECRET,
     cookie: {},
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
 };
 
 const strategy = new Auth0Strategy(
@@ -63,7 +63,6 @@ app.use(webpackHotMiddleware);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
