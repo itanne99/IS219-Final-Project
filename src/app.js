@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 const webpack = require('webpack');
 const config = require('../config/webpack.dev');
+require('dotenv').config();
 
 const compile = webpack(config);
 const webpackHotMiddleware = require('webpack-hot-middleware')(compile);
@@ -14,6 +15,7 @@ var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api');
 var formRouter = require('./routes/form');
 var tableRouter = require('./routes/table');
+var authRouter = require('./routes/auth').router;
 
 var app = express();
 
@@ -34,6 +36,7 @@ app.use('/users', usersRouter);
 app.use('/api', apiRouter);
 app.use('/form', formRouter);
 app.use('/table', tableRouter);
+app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
