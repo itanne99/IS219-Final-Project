@@ -6,7 +6,6 @@
     "no-unused-vars": 0,
     "linebreak-style": ["error", "windows"],
     "indent": "off",
-    "no-var": "off",
     "prefer-arrow-callback": "off",
     "func-names": "off",
     "import/order": "off",
