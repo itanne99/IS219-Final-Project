@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node src/bin/www",
+    "nodemon": "nodemon src/server/main.js",
     "webpack-dev": "webpack-dev-server --config=config/webpack.dev.js",
     "build": "webpack --config=config/webpack.dev.js",
     "dev": "node src/main.js"
@@ -37,6 +38,7 @@
     "http-errors": "~1.6.3",
     "jquery": "^3.6.0",
     "jsdom": "^16.5.3",
+    "jsonwebtoken": "^8.5.1",
     "mini-css-extract-plugin": "^1.5.0",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
