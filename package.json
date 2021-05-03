@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node src/bin/www",
+    "nodemon": "nodemon src/bin/www",
     "webpack-dev": "webpack-dev-server --config=config/webpack.dev.js",
     "build": "webpack --config=config/webpack.dev.js",
     "dev": "node src/main.js"
@@ -28,7 +29,7 @@
     "debug": "~2.6.9",
     "eslint": "^7.25.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-loader": "^4.0.2",
+    "eslint-webpack-plugin": "^2.5.4",
     "express": "~4.16.1",
     "extract-loader": "^5.1.0",
     "file-loader": "^6.2.0",
