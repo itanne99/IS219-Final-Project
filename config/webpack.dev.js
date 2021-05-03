@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -28,7 +29,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                use: ['babel-loader', 'eslint-loader'],
+                use: ['babel-loader'],
                 exclude: /node_modules/,
             },
             {
@@ -88,6 +89,8 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
+        }),
+        new ESLintPlugin({
         }),
     ],
 };
