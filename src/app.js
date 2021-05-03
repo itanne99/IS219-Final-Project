@@ -1,7 +1,7 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
 const webpack = require('webpack');
 const config = require('../config/webpack.dev');
 
@@ -9,13 +9,13 @@ const compile = webpack(config);
 const webpackHotMiddleware = require('webpack-hot-middleware')(compile);
 const webpackDevMiddleware = require('webpack-dev-middleware')(compile, config.devServer);
 
-var indexRouter = require('./routes');
-var usersRouter = require('./routes/users');
-var apiRouter = require('./routes/api');
-var formRouter = require('./routes/form');
-var tableRouter = require('./routes/table');
+const indexRouter = require('./routes');
+const usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
+const formRouter = require('./routes/form');
+const tableRouter = require('./routes/table');
 
-var app = express();
+const app = express();
 
 app.use(webpackDevMiddleware);
 app.use(webpackHotMiddleware);
@@ -36,12 +36,12 @@ app.use('/form', formRouter);
 app.use('/table', tableRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use((err, req, res) => {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
