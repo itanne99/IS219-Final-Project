@@ -1,10 +1,10 @@
-var express = require('express');
-var got = require('got');
+const express = require('express');
+const got = require('got');
 
-var router = express.Router();
+const router = express.Router();
 
 /* GET home page. */
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
     if (req.query.id == null) {
         res.render('newUser', { title: 'New User Form' });
     } else {

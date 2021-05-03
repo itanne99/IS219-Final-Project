@@ -1,26 +1,26 @@
-var express = require('express');
-var mysql = require('../db/db');
+const express = require('express');
+const mysql = require('../db/db');
 
-var router = express.Router();
+const router = express.Router();
 
 /* GET home page. */
-router.get('/list', function (req, res) {
+router.get('/list', (req, res) => {
     const sql = 'SELECT * FROM random_people';
-    mysql.query(sql, function (err, data, fields) {
+    mysql.query(sql, (err, data) => {
         if (err) throw err;
         res.json(data);
     });
 });
 
-router.get('/person/', function (req, res) {
+router.get('/person/', (req, res) => {
     const sql = 'SELECT * FROM random_people WHERE id=?';
-    mysql.query(sql, req.query.id, function (err, data, fields) {
+    mysql.query(sql, req.query.id, (err, data) => {
         if (err) throw err;
         res.json(data);
     });
 });
 
-router.post('/new', function (req, res) {
+router.post('/new', (req, res) => {
    const sql = 'INSERT INTO random_people (first_name, last_name, email, phone, street_address, city, state) VALUES (?)';
    const values = [
        req.body.first_name,
@@ -31,7 +31,7 @@ router.post('/new', function (req, res) {
        req.body.city,
        req.body.state,
    ];
-   mysql.query(sql, [values], function (err, data, fields) {
+   mysql.query(sql, [values], (err) => {
       if (err) throw err;
       res.json({
           status: 200,
@@ -40,7 +40,7 @@ router.post('/new', function (req, res) {
    });
 });
 
-router.put('/edit/:id', function (req, res) {
+router.put('/edit/:id', (req, res) => {
     const values = [
         req.body.first_name,
         req.body.last_name,
@@ -51,7 +51,7 @@ router.put('/edit/:id', function (req, res) {
         req.body.state,
     ];
     const sql = 'UPDATE random_people SET first_name=?, last_name=?, email=?, phone=?, street_address=?, city=?, state=? WHERE id=?';
-    mysql.query(sql, [values[0], values[1], values[2], values[3], values[4], values[5], values[6], req.params.id], function (err, data, fields) {
+    mysql.query(sql, [values[0], values[1], values[2], values[3], values[4], values[5], values[6], req.params.id], (err) => {
         if (err) throw err;
         res.json({
             status: 200,
@@ -60,7 +60,7 @@ router.put('/edit/:id', function (req, res) {
     });
 });
 
-router.post('/edit/:id', function (req, res) {
+router.post('/edit/:id', (req, res) => {
     const values = [
         req.body.first_name,
         req.body.last_name,
@@ -71,7 +71,7 @@ router.post('/edit/:id', function (req, res) {
         req.body.state,
     ];
     const sql = 'UPDATE random_people SET first_name=?, last_name=?, email=?, phone=?, street_address=?, city=?, state=? WHERE id=?';
-    mysql.query(sql, [values[0], values[1], values[2], values[3], values[4], values[5], values[6], req.params.id], function (err, data, fields) {
+    mysql.query(sql, [values[0], values[1], values[2], values[3], values[4], values[5], values[6], req.params.id], (err) => {
         if (err) throw err;
         res.redirect('/table');
     });
