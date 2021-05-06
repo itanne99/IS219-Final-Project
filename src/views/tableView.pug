@@ -12,6 +12,9 @@ block content
                     th Street Address
                     th City
                     th State
+                    th
+                    th
+                        a.btn.btn-success.w-100(href='/form' role='button') New
             tbody
                 each item in list
                     tr
@@ -25,4 +28,4 @@ block content
                         td
                             a.btn.btn-primary(href=`/form?id=${item.id}` role='button') Edit
                         td
-                            a.btn.btn-danger(href='#' role='button') Delete
+                            a.btn.btn-danger(href=`/api/delete/${item.id}` role='button') Delete
