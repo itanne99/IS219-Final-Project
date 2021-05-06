@@ -77,4 +77,20 @@ router.post('/edit/:id', (req, res) => {
     });
 });
 
+router.get('/delete', (req, res) => {
+    const message = 'No ID provided';
+    const error = {
+        status: 'Your are trying to delete a row from the table, but did not provide an ID',
+    };
+    res.render('error', { message, error });
+});
+
+router.get('/delete/:id', (req, res) => {
+    const sql = 'DELETE FROM random_people WHERE id=?';
+    mysql.query(sql, req.params.id, (err) => {
+        if (err) throw err;
+        res.redirect('/table');
+    });
+});
+
 module.exports = router;
