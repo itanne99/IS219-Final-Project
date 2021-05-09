@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const webpack = require('webpack');
 const config = require('../config/webpack.dev');
 const cookieSession = require('cookie-session');
+require('dotenv').config();
+const { auth } = require('express-openid-connect');
 
 const compile = webpack(config);
 const webpackHotMiddleware = require('webpack-hot-middleware')(compile);
@@ -21,6 +23,13 @@ const app = express();
 
 app.use(webpackDevMiddleware);
 app.use(webpackHotMiddleware);
+
+const authConfig = {
+    issuerBaseURL: process.env.ISSUER_BASE_URL,
+    baseURL: process.env.BASE_URL,
+    clientID: process.env.CLIENT_ID,
+    secret: process.env.SECRET,
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,6 +51,7 @@ app.use(
     }),
 );
 
+app.use(auth(authConfig));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', apiRouter);

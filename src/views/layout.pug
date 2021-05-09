@@ -17,6 +17,9 @@ html
           li.nav-item
             a.nav-link(href='/table') Table
           li.nav-item
-            a.nav-link(href='/auth/login') Login
+            if isAuthenticated
+              a.nav-link.text-danger(href='/logout') Logout
+            else
+              a.nav-link.text-success(href='/login?federated') Login
     block content
     script(src='main-bundle.js')
