@@ -5,9 +5,9 @@ const cookieParser = require('cookie-parser');
 const webpack = require('webpack');
 const config = require('../config/webpack.dev');
 const cookieSession = require('cookie-session');
-const jwt = require('express-jwt');
-const jwtAuthz = require('express-jwt-authz');
-const jwksRsa = require('jwks-rsa');
+// const jwt = require('express-jwt');
+// const jwtAuthz = require('express-jwt-authz');
+// const jwksRsa = require('jwks-rsa');
 require('dotenv').config();
 const { auth } = require('express-openid-connect');
 
@@ -34,7 +34,7 @@ const authConfig = {
     secret: process.env.SECRET,
 };
 
-const checkJwt = jwt({
+/* const checkJwt = jwt({
     // Dynamically provide a signing key
     // based on the kid in the header and
     // the signing keys provided by the JWKS endpoint.
@@ -49,7 +49,7 @@ const checkJwt = jwt({
     audience: `${process.env.BASE_URL}/callback`,
     issuer: [process.env.ISSUER_BASE_URL],
     algorithms: ['RS256'],
-});
+}); */
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
